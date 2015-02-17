@@ -11,6 +11,7 @@ class GoogleHelper
     private $scopes;
     private $objOAuthService;
 
+    /** Set the credentials given by Google **/
     public function setAppDetails($name, $client_id, $client_secret, $simple_api)
     {
         $this->app_name = $name;
@@ -19,16 +20,19 @@ class GoogleHelper
         $this->simple_api_key = $simple_api;
     }
 
+    /** Set the redirect url after the authentication process **/
     public function setRedirectURL($url)
     {
         $this->redirect_url = $url;
     }
 
+    /** Set the scope of the data to be requested from the user **/
     public function setScopes($google_scopes = array())
     {
         $this->scopes = $google_scopes;
     }
 
+    /** Fetch the user's data from Google **/
     public function getUserData()
     {
         //Client request for Google API access
