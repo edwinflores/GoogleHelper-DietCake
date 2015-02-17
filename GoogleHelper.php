@@ -24,9 +24,9 @@ class GoogleHelper
         $this->redirect_url = $url;
     }
 
-    public function setScopes($fb_scopes = array())
+    public function setScopes($google_scopes = array())
     {
-        $this->scopes = $fb_scopes;
+        $this->scopes = $google_scopes;
     }
 
     public function getUserData()
@@ -57,7 +57,7 @@ class GoogleHelper
         if (isset($_GET['code'])) {
             $client->authenticate(Param::get('code'));
             $_SESSION['gACCESSTOKEN'] = $client->getAccessToken();
-            header('Location: ' . APP_URL_LOCAL . '/user/google_login');
+            header('Location: ' . $this->redirect_url);
         }
 
         // Set access token to make request
